@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clearance Hunter</title>
+<style>
+body{font:16px system-ui;background:#0d1420;color:#f5f7fa;margin:0}
+main{max-width:760px;margin:auto;padding:22px}
+h1{margin-bottom:4px}
+.muted{color:#a9b7c8}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+input,select{background:#192638;color:white;border:1px solid #45546a;border-radius:9px;padding:12px;font:inherit;flex:1;min-width:130px}
+.deal{border:1px solid #344357;background:#162234;border-radius:14px;padding:16px;margin:12px 0}
+.line{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.price{font-size:24px;font-weight:800;color:#8de2b1}
+.pill{background:#244a38;color:#a6f2c4;padding:5px 9px;border-radius:50px;font-weight:700}
+.note{border-left:3px solid #f4bd67;padding:12px;background:#30281d;margin:18px 0}
+small{color:#a9b7c8}
+</style>
+</head>
+<body>
+<main>
+<h1>🛒 Clearance Hunter</h1>
+<div class="muted">Walmart · Lowe's · Home Depot</div>
+<div class="note"><b>DEMO ONLY:</b> These are fictional sample prices, not live deals. Retailer data connections are not enabled.</div>
+<div class="bar">
+<input id="search" placeholder="Search products" aria-label="Search products">
+<select id="retailer" aria-label="Retailer">
+<option value="">All retailers</option>
+<option>Walmart</option>
+<option>Lowe's</option>
+<option>Home Depot</option>
+</select>
+<select id="minimum" aria-label="Minimum discount">
+<option value="0">Any discount</option>
+<option value="50">50%+ off</option>
+<option value="70" selected>70%+ off</option>
+<option value="90">90%+ off</option>
+</select>
+</div>
+<div id="results"></div>
+<p><small>Version 0.3 · Demo data only · No API credentials stored on this page.</small></p>
+</main>
+<script>
+const deals=[
+{name:'Cordless drill kit',store:'Walmart',was:129,now:19},
+{name:'Portable work light',store:"Lowe's",was:49,now:5},
+{name:'Circular saw',store:'Home Depot',was:199,now:39},
+{name:'Outdoor storage bin',store:'Walmart',was:75,now:12}
+];
+const fmt=n=>n.toLocaleString('en-US',{style:'currency',currency:'USD'});
+function render(){
+const q=document.querySelector('#search').value.toLowerCase(),r=document.querySelector('#retailer').value,m=+document.querySelector('#minimum').value;
+const found=deals.map(d=>({...d,off:Math.round((1-d.now/d.was)*100)})).filter(d=>d.name.toLowerCase().includes(q)&&(!r||d.store===r)&&d.off>=m).sort((a,b)=>b.off-a.off);
+document.querySelector('#results').innerHTML=found.length?found.map(d=>`<article class="deal"><div class="line"><b>${d.name}</b><span class="pill">${d.off}% OFF</span></div><p class="muted">${d.store} · Sample listing</p><div class="line"><span class="price">${fmt(d.now)}</span><small>Was ${fmt(d.was)}</small></div></article>`).join(''):'<p class="muted">No sample deals match your filters.</p>';
+}
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',render));
+render();
+</script>
+</body>
+</html>
