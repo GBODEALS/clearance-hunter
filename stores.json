@@ -1,0 +1,95 @@
+{
+  "project": "Clearance Hunter",
+  "version": "0.1",
+  "homeZip": "27455",
+  "timezone": "America/New_York",
+  "categories": "all",
+  "schedule": {
+    "enabled": false,
+    "frequency": "twice_daily",
+    "localTimes": [
+      "08:00",
+      "20:00"
+    ],
+    "note": "Enable after a legitimate live pricing source is verified."
+  },
+  "pricing": {
+    "status": "unverified",
+    "requireAuthorizedSource": true,
+    "allowDemoPricesAsLive": false
+  },
+  "stores": [
+    {
+      "retailer": "walmart",
+      "storeId": "1498",
+      "address": "3738 Battleground Ave",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27410"
+    },
+    {
+      "retailer": "walmart",
+      "storeId": "3658",
+      "address": "2107 Pyramids Village Blvd",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27405"
+    },
+    {
+      "retailer": "walmart",
+      "storeId": "1842",
+      "address": "4424 W Wendover Ave",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27407"
+    },
+    {
+      "retailer": "lowes",
+      "storeId": "0387",
+      "address": "3001 Battleground Ave",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27408"
+    },
+    {
+      "retailer": "lowes",
+      "storeId": "2771",
+      "address": "2005 E Cone Blvd",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27405"
+    },
+    {
+      "retailer": "lowes",
+      "storeId": "0404",
+      "address": "1703 S Forty Dr",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27407"
+    },
+    {
+      "retailer": "home_depot",
+      "storeId": "3605",
+      "address": "3215 Brassfield Rd",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27410"
+    },
+    {
+      "retailer": "home_depot",
+      "storeId": "3604",
+      "address": "4425 W Wendover Ave",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27407"
+    },
+    {
+      "retailer": "home_depot",
+      "storeId": "3651",
+      "address": "2912 S Elm-Eugene St",
+      "city": "Greensboro",
+      "state": "NC",
+      "zip": "27406"
+    }
+  ]
+}
